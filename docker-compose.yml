@@ -1,15 +1,16 @@
 version: '3.8'
 services:
   deno-bot:
-    image: denoland/deno:alpine-2.7.11
+    build: .
     ports:
-      - "0.0.0.0:3000:3000"
+      - "0.0.0.0:3000:3000"  # ← Порт для Caddy
     environment:
       - BOT_TOKEN=${BOT_TOKEN}
-      - WEBHOOK_URL=https://tgbot.benetelega.ru
+      - WEBHOOK_URL=https://tgbot.benetelega.ru  # ← Публичный URL!
       - PORT=3000
-    command: ["run", "--allow-net", "--allow-env", "--allow-read", "/app/main.ts"]
-    working_dir: /app
-    volumes:
-      - .:/app
     restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "deno", "eval", "await fetch('http://localhost:3000')"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
