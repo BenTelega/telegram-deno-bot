@@ -1,33 +1,5 @@
 ```
 # Docker related
 .dockerenv
-Dockerfile.*
-
-# Dependencies
-node_modules/
-vendor/
-
-# Logs and temp files
-*.log
-*.tmp
-
-# Environment
-.env
-.env.local
-*.env.*
-
-# Editors
-.vscode/
-.idea/
-*.swp
-*.swo
-
-# OS generated files
-.DS_Store
-Thumbs.db
-
-# Build artifacts
-dist/
-build/
-target/
+Dockerfile
 ```
