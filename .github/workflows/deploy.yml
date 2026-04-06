@@ -1,0 +1,36 @@
+name: Deploy Deno Bot
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Deploy to server
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            cd /opt/beget/deno-bot
+            
+            # Pull latest changes
+            git pull origin main
+            
+            # Stop old container
+            docker compose down
+            
+            # Start new container
+            docker compose up -d --build
+            
+            # Clean up old images
+            docker image prune -f
+            
+            # Show logs
+            docker logs --tail 10 deno-bot-deno-bot-1
