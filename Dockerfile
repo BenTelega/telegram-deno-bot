@@ -2,9 +2,17 @@ FROM denoland/deno:alpine-2.7.11
 
 WORKDIR /app
 
-# Копируем всё сразу (без кэширования зависимостей)
+# Копируем конфигурацию и кэшируем зависимости
+COPY deno.json ./
+RUN deno cache main.ts
+
+# Копируем исходный код
 COPY . .
 
-# Запускаем напрямую, без кэша
-CMD ["run", "--allow-net", "--allow-env", "--allow-read", "--allow-import", "main.ts"]
+# Финальное кэширование после копирования всех файлов
+RUN deno cache main.ts
+
+EXPOSE 3000
+
+CMD ["run", "--allow-net", "--allow-env", "--allow-read", "main.ts"]
 
