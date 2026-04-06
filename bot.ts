@@ -23,16 +23,6 @@ const config: BotConfig = {
 
 const bot = new Bot(config.token);
 
-// Инициализация бота с обработкой ошибок
-try {
-  await bot.init();
-  console.log("✅ Бот успешно инициализирован");
-  console.log(`🤖 Username: @${(await bot.getMe()).username}`);
-} catch (error) {
-  console.error("❌ Ошибка инициализации бота:", error);
-  throw error;
-}
-
 // Middleware для логирования
 bot.use(async (ctx, next) => {
   const start = Date.now();
