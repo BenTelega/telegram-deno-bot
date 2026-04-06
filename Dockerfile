@@ -2,14 +2,10 @@ FROM denoland/deno:alpine-2.7.11
 
 WORKDIR /app
 
-# Копируем конфигурацию и кэшируем зависимости
-COPY deno.json ./
-RUN deno cache main.ts
-
-# Копируем исходный код
+# Копируем весь проект
 COPY . .
 
-# Финальное кэширование после копирования всех файлов
+# Кэшируем зависимости
 RUN deno cache main.ts
 
 EXPOSE 3000
