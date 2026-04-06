@@ -7,5 +7,5 @@ COPY . .
 
 EXPOSE 3000
 
-CMD ["run", "--allow-net", "--allow-env", "--allow-read", "main.ts"]
+CMD ["run", "--allow-net", "--allow-env", "--allow-read", "--allow-import", "main.ts"]
 
