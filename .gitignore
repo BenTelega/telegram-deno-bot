@@ -1,23 +1,44 @@
 ```
+# Build artifacts
+build/
+dist/
+*.o
+*.obj
+*.out
+
+# Dependencies
+node_modules/
+venv/
+.venv/
+__pycache__/
+*.egg-info/
+
 # Environment
 .env
 .env.local
 .env.*
 
-# Dependencies
-node_modules/
-deno.lock
-
-# Logs and temp files
-*.log
-*.tmp
-*.swp
-
 # Editors
 .vscode/
 .idea/
+*.swp
+*.swo
+*.tmp
+
+# Logs
+*.log
 
 # OS
 .DS_Store
 Thumbs.db
+
+# Compressed files
+*.zip
+*.gz
+*.tar
+*.tgz
+*.bz2
+*.xz
+*.7z
+*.rar
 ```
