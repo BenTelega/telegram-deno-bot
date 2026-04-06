@@ -5,8 +5,8 @@ WORKDIR /app
 # Копируем весь проект
 COPY . .
 
-# Кэшируем зависимости
-RUN deno cache main.ts
+# Кэшируем зависимости с необходимыми разрешениями
+RUN deno cache --allow-net --allow-env --allow-read main.ts
 
 EXPOSE 3000
 
