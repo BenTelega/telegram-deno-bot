@@ -1,28 +1,19 @@
-import { App, fsRoutes, staticFiles, trailingSlashes } from "fresh";
-import { bot } from "./bot.ts";
+// main.ts
+import app from "./routes.ts";
 
-const app = new App()
-  .use(staticFiles())
-  .use(trailingSlashes("never"));
+const PORT = Number(Deno.env.get("PORT")) || 3000;
+const HOST = "0.0.0.0";
 
-await fsRoutes(app, {
-  dir: "./",
-  loadIsland: (path) => import(`./islands/${path}`),
-  loadRoute: (path) => import(`./routes/${path}`),
+console.log(`🤖 Bot server running on http://${HOST}:${PORT}`);
+
+Deno.serve({ port: PORT, hostname: HOST }, app.fetch);
+
+Deno.addSignalListener("SIGINT", () => {
+  console.log("\n🛑 Получен SIGINT, завершаем работу...");
+  Deno.exit(0);
 });
 
-app.post("/webhook", async (req) => {
-  try {
-    const update = await req.json();
-    console.log("Update received:", update);
-    await bot.handleUpdate(update);
-    return new Response("OK");
-  } catch (err) {
-    console.error("Error handling update:", err);
-    return new Response("Error", { status: 500 });
-  }
+Deno.addSignalListener("SIGTERM", () => {
+  console.log("\n🛑 Получен SIGTERM, завершаем работу...");
+  Deno.exit(0);
 });
-
-if (import.meta.main) {
-  await app.listen();
-}
