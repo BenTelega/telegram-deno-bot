@@ -4,11 +4,62 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Telegram Bot</title>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
   <link rel="stylesheet" href="/assets/style.css">
 </head>
 <body>
-  <h1>Telegram Bot</h1>
-  <p>Бот работает</p>
+  <div class="scanlines"></div>
+  <div class="crt-effect"></div>
+  
+  <main>
+    <div class="title-box">
+      <span class="pixel-decoration">◆</span>
+      <h1>TELEGRAM<br>BOT</h1>
+      <span class="pixel-decoration">◆</span>
+    </div>
+    
+    <div class="subtitle">Deno Webhook v1.0</div>
+    
+    <div class="divider"></div>
+    
+    <div class="user-box" id="user-box">
+      <span class="user-label">PLAYER DATA</span>
+      <div class="user-info">
+        <div class="avatar" id="avatar">?</div>
+        <span class="user-name" id="user-name">---</span>
+        <span class="user-id" id="user-id">ID: ---</span>
+      </div>
+    </div>
+    
+    <div class="divider"></div>
+    
+    <div class="status-box">
+      <span class="status-label">STATUS:</span>
+      <span class="status-value blink">ONLINE</span>
+      <span class="heart">♦</span>
+    </div>
+    
+    <div class="footer">
+      <a href="https://t.me/BenTelegaCore" target="_blank">⚡ @BenTelegaCore</a>
+    </div>
+    
+    <nav class="bottom-menu">
+      <div class="menu-btn">
+        <span class="btn-icon">✦</span>
+        <span class="btn-label">MENU</span>
+      </div>
+      <div class="menu-btn">
+        <span class="btn-icon">♥</span>
+        <span class="btn-label">FAV</span>
+      </div>
+      <div class="menu-btn">
+        <span class="btn-icon">⚙</span>
+        <span class="btn-label">SET</span>
+      </div>
+    </nav>
+  </main>
+  
   <script src="/assets/script.js"></script>
 </body>
 </html>
