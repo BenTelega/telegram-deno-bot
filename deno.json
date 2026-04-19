@@ -7,7 +7,8 @@
     "check": "deno check main.ts"
   },
   "imports": {
-    "grammy": "npm:grammy@^1.23.1"
+    "grammy": "npm:grammy@^1.23.1",
+    "hono": "jsr:@hono/hono"
   },
   "compilerOptions": {
     "strict": true
