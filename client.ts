@@ -1,0 +1,1 @@
+import "./public/assets/style.css";

@@ -1,17 +1,27 @@
 {
   "tasks": {
-    "start": "deno run --allow-net --allow-env --allow-read main.ts",
-    "dev": "deno run --watch --allow-net --allow-env --allow-read main.ts",
+    "start": "deno serve -A main.ts",
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "deno serve -A _fresh/server.js",
     "lint": "deno lint",
     "fmt": "deno fmt",
     "check": "deno check main.ts"
   },
   "imports": {
-    "grammy": "npm:grammy@^1.23.1",
-    "hono": "jsr:@hono/hono"
+    "fresh": "jsr:@fresh/core@^2",
+    "@fresh/plugin-vite": "jsr:@fresh/plugin-vite@^1",
+    "@preact/signals": "npm:@preact/signals@^2",
+    "preact": "npm:preact@^10",
+    "preact/hooks": "npm:preact@^10/hooks",
+    "@tailwindcss/vite": "npm:@tailwindcss/vite@^4",
+    "tailwindcss": "npm:tailwindcss@^4",
+    "grammy": "npm:grammy@^1",
+    "@/": "./"
   },
   "compilerOptions": {
-    "strict": true
+    "jsx": "react-jsx",
+    "jsxImportSource": "preact"
   },
   "lint": {
     "rules": {
@@ -23,5 +33,3 @@
     "lineWidth": 100
   }
 }
-
-

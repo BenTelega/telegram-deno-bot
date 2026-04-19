@@ -14,13 +14,14 @@
 - `WEBHOOK_URL` — публичный URL для webhook
 - `PORT` — порт сервера (по умолчанию 3000)
 
-## Структура
+## Структура (Fresh 2.x)
 
-- `main.ts` — точка входа, HTTP-сервер
-- `routes.ts` — роуты Hono (/, /health, /webhook, /assets/*)
-- `bot.ts` — логика бота, обработчики
-- `index.html` — статический HTML
-- `assets/` — статические файлы (CSS, JS)
+- `main.ts` — точка входа Fresh
+- `client.ts` — клиентский вход (CSS импорты)
+- `vite.config.ts` — конфиг Vite + Tailwind
+- `routes/` — страницы и API (/, /health, /webhook)
+- `bot.ts` — логика Telegram бота
+- `public/assets/` — статические файлы (CSS)
 
 ## Тесты
 
