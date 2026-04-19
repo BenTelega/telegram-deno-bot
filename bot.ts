@@ -1,5 +1,5 @@
 // bot.ts
-import { Bot } from "https://deno.land/x/grammy@v1.23.1/mod.ts";
+import { Bot } from "grammy";
 
 const BOT_TOKEN = Deno.env.get("BOT_TOKEN")!;
 const bot = new Bot(BOT_TOKEN);
