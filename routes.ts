@@ -10,17 +10,13 @@ app.use("*", async (c, next) => {
 });
 
 app.get("/", async (c) => {
-  const html = await Deno.readTextFile("index.html");
+  const html = await Deno.readTextFile("public/index.html");
   return c.html(html);
-});
-
-app.get("/health", (c) => {
-  return c.text("OK");
 });
 
 app.get("/assets/:path*", async (c) => {
   const path = c.req.param("path*");
-  const file = await Deno.readTextFile(`assets/${path}`);
+  const file = await Deno.readTextFile(`public/assets/${path}`);
   const ext = path.split(".").pop();
   const contentType = ext === "css" ? "text/css" : ext === "js" ? "application/javascript" : "text/plain";
   return new Response(file, { headers: { "Content-Type": contentType } });

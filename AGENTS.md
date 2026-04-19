@@ -19,8 +19,7 @@
 - `main.ts` — точка входа, HTTP-сервер
 - `routes.ts` — роуты Hono (/, /health, /webhook, /assets/*)
 - `bot.ts` — логика бота, обработчики
-- `index.html` — статический HTML
-- `assets/` — статические файлы (CSS, JS)
+- `public/` — статические файлы (HTML, CSS, JS)
 
 ## Тесты
 
